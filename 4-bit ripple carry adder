@@ -57,3 +57,35 @@ module carry(cin,x,y,c);
 endmodule
 
 
+// 4-bit RCA testbench
+
+`timescale 1ns / 1ps
+
+module RCA_testbench( );
+
+reg[3:0] x, y;
+reg cin;
+wire[4:0] s;
+
+RCA dut ( .x(x), .y(y), .cin(cin), .s(s));
+
+initial begin 
+x=0; y=0; cin=0;
+end
+
+initial begin
+#30
+x=5; y=6;
+#30
+x=1; y=5;
+#30
+x=8; y=10;
+#30
+x=9; y=20;
+
+$stop;
+
+end 
+endmodule
+
+
